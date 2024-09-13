@@ -151,8 +151,8 @@ uint8_t iwinfo_ghz2band(uint32_t ghz)
 
 size_t iwinfo_format_hwmodes(int modes, char *buf, size_t len)
 {
-	// bit numbers as per IWINFO_80211_*:  ad ac ax  a  b  be g  n
-	const int order[IWINFO_80211_COUNT] = { 5, 4, 6, 0, 1, 7, 2, 3 };
+	// bit numbers as per IWINFO_80211_*:  ad ac ax  be a  b  g  n
+	const int order[IWINFO_80211_COUNT] = { 5, 4, 6, 7, 0, 1, 2, 3 };
 	size_t res = 0;
 	int i;
 
