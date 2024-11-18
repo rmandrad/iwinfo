@@ -57,10 +57,15 @@ static const char *format_band(int band)
 
 static const char *format_restricted(uint8_t restricted)
 {
-	if (restricted)
-		return "restricted";
-
-	return "unrestricted";
+	switch (restricted)
+	{
+		case 0:
+			return "unrestricted";
+		case 1:
+			return "restricted";
+		default:
+			return "unknown restriction status";
+	}
 }
 
 static char * format_channel(int ch)
