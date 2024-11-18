@@ -55,6 +55,14 @@ static const char *format_band(int band)
 	return "unknown";
 }
 
+static const char *format_restricted(uint8_t restricted)
+{
+	if (restricted)
+		return "restricted";
+
+	return "unrestricted";
+}
+
 static char * format_channel(int ch)
 {
 	static char buf[16];
@@ -772,12 +780,13 @@ static void print_freqlist(const struct iwinfo_ops *iw, const char *ifname)
 	{
 		e = (struct iwinfo_freqlist_entry *) &buf[i];
 
-		printf("%s %s (Band: %s, Channel %s) %s\n",
+		printf("%s %s (Band: %s, Channel %s) %s %s\n",
 			(freq == e->mhz) ? "*" : " ",
 			format_frequency(e->mhz),
 			format_band(e->band),
 			format_channel(e->channel),
-			format_freqflags(e->flags));
+			format_freqflags(e->flags),
+			format_restricted(e->restricted));
 	}
 }
 
